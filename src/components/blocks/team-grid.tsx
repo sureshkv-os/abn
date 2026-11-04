@@ -1,5 +1,7 @@
+import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { principal, team } from "@/content/team";
+import { team } from "@/content/team";
+import { site } from "@/content/site";
 
 function initials(name: string) {
   return name
@@ -12,47 +14,68 @@ function initials(name: string) {
 }
 
 /**
- * About page team grid (adapts Tailark mist-team-1). Reads content/team.
- * TODO(client, Q6): supply professional photos to replace the initials.
+ * About page team list: a square photo on the left with name, role and bio on
+ * the right, divided row by row. Reads content/team.
  */
 export function TeamGrid() {
-  const members = [
-    {
-      name: principal.name,
-      role: principal.role,
-      credentials: "",
-      bio: principal.story,
-    },
-    ...team,
-  ];
-
   return (
     <section className="bg-muted/40">
-      <div className="mx-auto max-w-6xl px-6 py-20">
+      <div className="mx-auto max-w-4xl px-6 py-20">
         <h2 className="text-balance text-3xl font-semibold sm:text-4xl">
           Meet the team
         </h2>
-        <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-          {members.map((member, index) => (
-            <div key={index} className="flex items-start gap-4">
-              <Avatar className="size-14">
-                <AvatarFallback className="bg-primary/10 text-primary">
-                  {initials(member.name)}
-                </AvatarFallback>
-              </Avatar>
+        <p className="mt-4 max-w-2xl text-muted-foreground">
+          The people behind {site.name} — here to help you and your business.
+        </p>
+
+        <ul className="mt-12 divide-y divide-border/60">
+          {team.map((member) => (
+            <li
+              key={member.photo || member.name}
+              className="grid grid-cols-[auto_1fr] gap-5 py-8 first:pt-0 sm:gap-6"
+            >
+              {/* Photo */}
+              <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-muted sm:size-24">
+                {member.photo ? (
+                  <Image
+                    src={member.photo}
+                    alt={`${member.name} — ${site.name}`}
+                    fill
+                    className="object-cover object-top"
+                    sizes="96px"
+                  />
+                ) : (
+                  <Avatar className="size-full rounded-xl">
+                    <AvatarFallback className="rounded-xl bg-primary/10 text-primary">
+                      {initials(member.name)}
+                    </AvatarFallback>
+                  </Avatar>
+                )}
+              </div>
+
+              {/* Details */}
               <div>
-                <h3 className="font-semibold">{member.name}</h3>
-                <p className="text-sm text-primary">{member.role}</p>
-                {member.credentials && (
-                  <p className="text-sm text-muted-foreground">
-                    {member.credentials}
+                <h3 className="text-lg font-semibold leading-tight">
+                  {member.name}
+                </h3>
+                {(member.role || member.credentials) && (
+                  <p className="mt-1 text-sm font-medium text-primary">
+                    {[member.role, member.credentials]
+                      .filter(Boolean)
+                      .join(" · ")}
                   </p>
                 )}
-                <p className="mt-2 text-sm text-muted-foreground">{member.bio}</p>
+                {member.bio && (
+                  <div className="mt-3 space-y-2 text-sm leading-relaxed text-muted-foreground">
+                    {member.bio.map((para, i) => (
+                      <p key={i}>{para}</p>
+                    ))}
+                  </div>
+                )}
               </div>
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </section>
   );
