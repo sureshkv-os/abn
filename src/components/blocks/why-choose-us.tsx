@@ -1,4 +1,6 @@
 import { Clock, HandshakeIcon, ShieldCheck, Sparkles } from "lucide-react";
+import { accentAt } from "@/lib/palette";
+import { cn } from "@/lib/utils";
 
 const reasons = [
   {
@@ -32,13 +34,24 @@ export function WhyChooseUs() {
           Why clients choose us
         </h2>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-          {reasons.map((reason) => (
-            <div key={reason.title}>
-              <reason.icon className="size-8 text-primary" aria-hidden />
-              <h3 className="mt-4 text-lg font-medium">{reason.title}</h3>
-              <p className="mt-2 text-muted-foreground">{reason.body}</p>
-            </div>
-          ))}
+          {reasons.map((reason, i) => {
+            const accent = accentAt(i);
+            return (
+              <div key={reason.title}>
+                <span
+                  className={cn(
+                    "grid size-12 place-items-center rounded-xl",
+                    accent.bg,
+                    accent.fg,
+                  )}
+                >
+                  <reason.icon className="size-6" aria-hidden />
+                </span>
+                <h3 className="mt-4 text-lg font-medium">{reason.title}</h3>
+                <p className="mt-2 text-muted-foreground">{reason.body}</p>
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

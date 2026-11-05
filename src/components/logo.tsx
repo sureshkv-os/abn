@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
-import logoMark from "../../public/logo-mark.png";
+import logoMark from "../../public/logo.png";
 
 /**
  * Brand wordmark (client-supplied ASHOK Business Consulting Group logo, trimmed

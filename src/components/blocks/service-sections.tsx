@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { cn } from "@/lib/utils";
 import { services } from "@/content/services";
 import { site } from "@/content/site";
+import { serviceAccent } from "@/lib/palette";
 
 /**
  * Services page: each service as a separated section with an anchor id, "who
@@ -13,7 +14,9 @@ import { site } from "@/content/site";
 export function ServiceSections() {
   return (
     <div className="mx-auto max-w-6xl px-6">
-      {services.map((service, i) => (
+      {services.map((service, i) => {
+        const accent = serviceAccent(service.slug);
+        return (
         <section
           key={service.slug}
           id={service.slug}
@@ -45,7 +48,10 @@ export function ServiceSections() {
                 {service.includes.map((item) => (
                   <li key={item} className="flex items-start gap-3">
                     <Check
-                      className="mt-0.5 size-5 shrink-0 text-primary"
+                      className={cn(
+                        "mt-0.5 size-5 shrink-0",
+                        accent.fg,
+                      )}
                       aria-hidden
                     />
                     <span>{item}</span>
@@ -53,8 +59,10 @@ export function ServiceSections() {
                 ))}
               </ul>
               {service.caseStudy && (
-                <Card variant="soft" className="p-5 text-sm text-muted-foreground">
-                  <span className="font-semibold text-foreground">
+                <Card
+                  className={cn("p-5 text-sm text-foreground/80", accent.bg)}
+                >
+                  <span className={cn("font-semibold", accent.fg)}>
                     Case study:{" "}
                   </span>
                   {service.caseStudy}
@@ -63,7 +71,8 @@ export function ServiceSections() {
             </div>
           </div>
         </section>
-      ))}
+        );
+      })}
     </div>
   );
 }
