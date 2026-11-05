@@ -25,12 +25,12 @@ export function ProcessSteps() {
           </ol>
         </div>
 
-        <div className="rounded-xl bg-muted/50 p-6">
-          <h3 className="font-semibold">What you can expect</h3>
+        <div className="rounded-xl bg-sky p-6 text-foreground/80">
+          <h3 className="font-semibold text-foreground">What you can expect</h3>
           <ul className="mt-4 space-y-3">
             {expectations.map((item) => (
               <li key={item} className="flex items-start gap-3 text-sm">
-                <Check className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+                <Check className="mt-0.5 size-5 shrink-0 text-sky-foreground" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}
