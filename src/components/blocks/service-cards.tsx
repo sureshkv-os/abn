@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, Building2, HeartPulse, Home, LineChart } from "lucide-react";
 import { Card } from "@/components/ui/card";
+import { IconTile } from "@/components/ui/icon-tile";
 import { services } from "@/content/services";
 import { serviceAccent } from "@/lib/palette";
 import { cn } from "@/lib/utils";
@@ -30,16 +31,16 @@ export function ServiceCards() {
           const Icon = icons[service.slug] ?? Building2;
           const accent = serviceAccent(service.slug);
           return (
-            <Card key={service.slug} className="flex flex-col p-6">
-              <span
-                className={cn(
-                  "grid size-12 place-items-center rounded-xl",
-                  accent.bg,
-                  accent.fg,
-                )}
-              >
+            <Card
+              key={service.slug}
+              className={cn(
+                "flex flex-col border-0 border-t-2 p-6",
+                accent.border,
+              )}
+            >
+              <IconTile accent={accent}>
                 <Icon className="size-6" aria-hidden />
-              </span>
+              </IconTile>
               <h3 className="mt-4 text-lg font-semibold">{service.title}</h3>
               <p className="mt-2 flex-1 text-sm text-muted-foreground">
                 {service.summary}

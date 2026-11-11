@@ -1,4 +1,6 @@
 import { Clock, Mail, MapPin, Phone, Star } from "lucide-react";
+import { IconTile } from "@/components/ui/icon-tile";
+import { houseAccent } from "@/lib/palette";
 import { site } from "@/content/site";
 
 /** Contact page: NAP, click-to-call, hours and Google Business Profile link. */
@@ -19,25 +21,33 @@ export function ContactDetails() {
 
       <ul className="space-y-4 text-sm">
         <li className="flex items-start gap-3">
-          <Phone className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+          <IconTile accent={houseAccent} size={9}>
+            <Phone className="size-5" aria-hidden />
+          </IconTile>
           <a href={contact.phone.href} className="hover:underline">
             {contact.phone.display}
           </a>
         </li>
         <li className="flex items-start gap-3">
-          <Mail className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+          <IconTile accent={houseAccent} size={9}>
+            <Mail className="size-5" aria-hidden />
+          </IconTile>
           <a href={`mailto:${contact.email}`} className="hover:underline">
             {contact.email}
           </a>
         </li>
         {addressLine && (
           <li className="flex items-start gap-3">
-            <MapPin className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+            <IconTile accent={houseAccent} size={9}>
+              <MapPin className="size-5" aria-hidden />
+            </IconTile>
             <span>{addressLine}</span>
           </li>
         )}
         <li className="flex items-start gap-3">
-          <Clock className="mt-0.5 size-5 shrink-0 text-primary" aria-hidden />
+          <IconTile accent={houseAccent} size={9}>
+            <Clock className="size-5" aria-hidden />
+          </IconTile>
           <span>{contact.hours}</span>
         </li>
       </ul>

@@ -41,9 +41,14 @@ export default function HowWeWorkPage() {
           <h2 className="text-sm font-semibold uppercase tracking-wide text-muted-foreground">
             Tools we use
           </h2>
-          <div className="mt-4 flex flex-wrap gap-6 text-lg font-medium">
+          <div className="mt-4 flex flex-wrap gap-3 text-base font-medium">
             {tools.map((tool) => (
-              <span key={tool}>{tool}</span>
+              <span
+                key={tool}
+                className="rounded-full bg-sky px-4 py-1.5 text-sky-foreground"
+              >
+                {tool}
+              </span>
             ))}
           </div>
         </div>
@@ -56,7 +61,11 @@ export default function HowWeWorkPage() {
         </h2>
         <Accordion className="mt-8">
           {faqs.map((faq, i) => (
-            <AccordionItem key={i} value={`faq-${i}`}>
+            <AccordionItem
+              key={i}
+              value={`faq-${i}`}
+              className="border-l-2 border-l-sky-foreground/50 pl-4"
+            >
               <AccordionTrigger className="text-base">
                 {faq.question}
               </AccordionTrigger>
