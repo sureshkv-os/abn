@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
  */
 const sizeClasses = {
   9: "size-9",
-  10: "size-10",
   12: "size-12",
 } as const;
 

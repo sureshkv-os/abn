@@ -20,7 +20,7 @@ export function ContactDetails() {
       <h2 className="text-xl font-semibold">Get in touch</h2>
 
       <ul className="space-y-4 text-sm">
-        <li className="flex items-center gap-3">
+        <li className="flex items-start gap-3">
           <IconTile accent={houseAccent} size={9}>
             <Phone className="size-5" aria-hidden />
           </IconTile>
@@ -28,7 +28,7 @@ export function ContactDetails() {
             {contact.phone.display}
           </a>
         </li>
-        <li className="flex items-center gap-3">
+        <li className="flex items-start gap-3">
           <IconTile accent={houseAccent} size={9}>
             <Mail className="size-5" aria-hidden />
           </IconTile>
@@ -37,14 +37,14 @@ export function ContactDetails() {
           </a>
         </li>
         {addressLine && (
-          <li className="flex items-center gap-3">
+          <li className="flex items-start gap-3">
             <IconTile accent={houseAccent} size={9}>
               <MapPin className="size-5" aria-hidden />
             </IconTile>
             <span>{addressLine}</span>
           </li>
         )}
-        <li className="flex items-center gap-3">
+        <li className="flex items-start gap-3">
           <IconTile accent={houseAccent} size={9}>
             <Clock className="size-5" aria-hidden />
           </IconTile>

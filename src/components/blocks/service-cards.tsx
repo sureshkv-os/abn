@@ -33,7 +33,10 @@ export function ServiceCards() {
           return (
             <Card
               key={service.slug}
-              className={cn("flex flex-col border-t-2 p-6", accent.border)}
+              className={cn(
+                "flex flex-col border-0 border-t-2 p-6",
+                accent.border,
+              )}
             >
               <IconTile accent={accent}>
                 <Icon className="size-6" aria-hidden />
