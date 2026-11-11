@@ -1,5 +1,7 @@
 import Image from "next/image";
 import { awards } from "@/content/team";
+import { houseAccent } from "@/lib/palette";
+import { cn } from "@/lib/utils";
 
 /**
  * Award badges (client-supplied images). Used on the About page and reusable
@@ -19,7 +21,10 @@ export function AwardsStrip({
         {awards.map((award) => (
           <li
             key={award.image}
-            className="flex flex-col items-center gap-4 text-center"
+            className={cn(
+              "flex flex-col items-center gap-4 rounded-2xl p-6 text-center",
+              houseAccent.bg,
+            )}
           >
             <Image
               src={award.image}

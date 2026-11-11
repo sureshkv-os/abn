@@ -8,8 +8,10 @@ import { AnimatedHeadline } from "@/components/blocks/animated-headline";
 import heroImage from "../../../public/hero.png";
 
 /**
- * Home hero: the client-supplied image covers the full section as a background,
- * with a navy gradient overlay so the headline and CTAs read clearly on top.
+ * Home hero: the client-supplied image covers the full section as a background.
+ * A soft navy gradient sits over the left (where the copy lives) and fades to
+ * transparent, so the headline and CTAs stay readable while most of the photo
+ * shows through uncovered on the right.
  */
 export function Hero() {
   return (
@@ -25,10 +27,10 @@ export function Hero() {
         className="-z-20 object-cover"
         sizes="100vw"
       />
-      {/* Navy gradient overlay for contrast */}
+      {/* Soft navy gradient over the left, fading to reveal the photo */}
       <div
         aria-hidden
-        className="-z-10 absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/80 to-primary/60"
+        className="-z-10 absolute inset-0 bg-gradient-to-r from-primary/90 via-primary/55 via-45% to-transparent to-80%"
       />
 
       <div className="mx-auto max-w-6xl px-6 py-24 sm:py-32 lg:py-40">

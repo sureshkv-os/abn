@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { houseAccent } from "@/lib/palette";
 import { reviews } from "@/content/reviews";
 import { site } from "@/content/site";
 
@@ -25,7 +26,10 @@ export function Testimonials({
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
         {reviews.map((review, index) => (
-          <figure key={index}>
+          <figure
+            key={index}
+            className={cn("border-l-2 pl-5", houseAccent.border)}
+          >
             <div className="flex gap-1" aria-label={`${review.rating} out of 5 stars`}>
               {Array.from({ length: 5 }).map((_, i) => (
                 <Star

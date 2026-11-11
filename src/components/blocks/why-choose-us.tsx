@@ -1,6 +1,6 @@
 import { Clock, HandshakeIcon, ShieldCheck, Sparkles } from "lucide-react";
+import { IconTile } from "@/components/ui/icon-tile";
 import { accentAt } from "@/lib/palette";
-import { cn } from "@/lib/utils";
 
 const reasons = [
   {
@@ -38,15 +38,9 @@ export function WhyChooseUs() {
             const accent = accentAt(i);
             return (
               <div key={reason.title}>
-                <span
-                  className={cn(
-                    "grid size-12 place-items-center rounded-xl",
-                    accent.bg,
-                    accent.fg,
-                  )}
-                >
+                <IconTile accent={accent}>
                   <reason.icon className="size-6" aria-hidden />
-                </span>
+                </IconTile>
                 <h3 className="mt-4 text-lg font-medium">{reason.title}</h3>
                 <p className="mt-2 text-muted-foreground">{reason.body}</p>
               </div>
