@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import { Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
+import { GradientCta } from "@/components/ui/gradient-cta";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
 import { AnimatedHeadline } from "@/components/blocks/animated-headline";
@@ -46,15 +46,9 @@ export function Hero() {
             advice, fixed fees, and a team that knows your file.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Link
-              href={site.primaryCta.href}
-              className={cn(
-                buttonVariants({ size: "lg" }),
-                "bg-background text-foreground hover:bg-background/90",
-              )}
-            >
+            <GradientCta href={site.primaryCta.href}>
               {site.primaryCta.label}
-            </Link>
+            </GradientCta>
             <a
               href={site.contact.phone.href}
               className={cn(
