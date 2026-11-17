@@ -1,6 +1,9 @@
-import { Clock, Mail, MapPin, Phone, Star } from "lucide-react";
+import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import { IconTile } from "@/components/ui/icon-tile";
-import { ReviewOnGoogleButton } from "@/components/review-on-google-button";
+import {
+  ReadReviewsOnGoogleBadge,
+  ReviewOnGoogleButton,
+} from "@/components/google-review-ctas";
 import { houseAccent } from "@/lib/palette";
 import { site } from "@/content/site";
 
@@ -53,19 +56,14 @@ export function ContactDetails() {
         </li>
       </ul>
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-4">
-        {contact.googleBusinessProfileUrl && (
-          <a
-            href={contact.googleBusinessProfileUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-          >
-            <Star className="size-4 fill-primary stroke-primary" aria-hidden />
-            Read our Google reviews
-          </a>
-        )}
-        <ReviewOnGoogleButton />
+      <div className="rounded-xl border border-border/60 bg-secondary/30 p-5">
+        <p className="text-sm font-medium text-foreground">
+          Rated {site.credibility.googleRating} by our clients on Google
+        </p>
+        <div className="mt-4 flex flex-wrap items-center gap-6">
+          <ReadReviewsOnGoogleBadge className="w-24" />
+          <ReviewOnGoogleButton className="w-[180px]" />
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,10 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { ReviewOnGoogleButton } from "@/components/review-on-google-button";
+import {
+  ReadReviewsOnGoogleBadge,
+  ReviewOnGoogleButton,
+} from "@/components/google-review-ctas";
 import { houseAccent } from "@/lib/palette";
 import { asset } from "@/lib/base-path";
 import { reviews } from "@/content/reviews";
@@ -28,13 +31,16 @@ export function Testimonials({
 }) {
   return (
     <section className="mx-auto max-w-6xl px-6 py-20">
-      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
-        <h2 className="text-balance text-3xl font-semibold sm:text-4xl">
-          {heading}
-        </h2>
-        <p className="text-sm text-muted-foreground">
-          Rated {site.credibility.googleRating} on Google
-        </p>
+      <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
+        <div className="space-y-2">
+          <h2 className="text-balance text-3xl font-semibold sm:text-4xl">
+            {heading}
+          </h2>
+          <p className="text-sm text-muted-foreground">
+            Rated {site.credibility.googleRating} on Google
+          </p>
+        </div>
+        <ReadReviewsOnGoogleBadge />
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
         {reviews.map((review, index) => (
@@ -75,7 +81,10 @@ export function Testimonials({
           </figure>
         ))}
       </div>
-      <div className="mt-12 flex justify-center">
+      <div className="mt-14 flex flex-col items-center gap-3 border-t border-border/60 pt-10">
+        <p className="text-sm text-muted-foreground">
+          Worked with us? We’d love to hear how it went.
+        </p>
         <ReviewOnGoogleButton />
       </div>
     </section>
