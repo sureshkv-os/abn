@@ -1,6 +1,9 @@
 import type { MetadataRoute } from "next";
 import { site } from "@/content/site";
 
+// Required so this metadata route is prerendered under `output: "export"`.
+export const dynamic = "force-static";
+
 const routes = ["/", "/services", "/about", "/how-we-work", "/contact", "/privacy-policy"];
 
 const now = new Date();

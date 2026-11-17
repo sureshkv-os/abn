@@ -1,9 +1,20 @@
 import type { NextConfig } from "next";
-import { redirects as redirectMap } from "./src/content/redirects";
+
+// GitHub Pages is a static host, so the site is built with `output: "export"`.
+// This rules out server-only features: the /api/contact route handler, the
+// 301 `redirects()` map, and `cacheComponents` / `partialPrefetching` (all of
+// which require a Node.js server at request time) are intentionally omitted.
+//
+// The site is served from a project page at
+//   https://sureshkv-os.github.io/abn/
+// so `basePath` prefixes every route and asset with `/abn`. If you later move
+// to a custom domain served at the root, remove `basePath` and add a
+// `public/CNAME` file containing the domain.
+const repoBasePath = "/abn";
 
 const nextConfig: NextConfig = {
-  cacheComponents: true,
-  partialPrefetching: true,
+  output: "export",
+  basePath: repoBasePath,
   turbopack: {
     rules: {
       "*.css": {
@@ -12,16 +23,12 @@ const nextConfig: NextConfig = {
       },
     },
   },
-  // 301 redirect map from the old site (proposal §2). Sourced from
-  // src/content/redirects.ts; finalise from a full crawl before launch.
-  async redirects() {
-    // statusCode 301 (not `permanent: true`, which emits 308) to match the
-    // proposal's 301 redirect commitment.
-    return redirectMap.map((r) => ({
-      source: r.source,
-      destination: r.destination,
-      statusCode: 301,
-    }));
+  // Emit `about/index.html` instead of `about.html` so GitHub Pages resolves
+  // clean URLs without a server-side rewrite.
+  trailingSlash: true,
+  images: {
+    // GitHub Pages cannot run the default image optimizer.
+    unoptimized: true,
   },
 };
 
