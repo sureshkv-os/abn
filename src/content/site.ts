@@ -27,7 +27,7 @@ export const site = {
   },
 
   contact: {
-    // TODO(client, Q22): confirm single primary phone. Current site shows two.
+    // Both numbers are published on the live site; the 07 number is the local primary.
     phone: {
       display: "07 3519 4250",
       href: "tel:+61735194250",
@@ -36,21 +36,22 @@ export const site = {
       display: "1300 082 695",
       href: "tel:1300082695",
     },
-    // TODO(client, Q20/Q22): confirm primary enquiry email.
-    email: "hello@accountantsbrisbanenorth.com.au",
+    // Published enquiry address on the live site (accountantsbrisbanenorth.com.au).
+    email: "admin@stpaccountants.com",
     address: {
-      // TODO(client, Q18): confirm public address / service area.
-      street: "",
-      suburb: "Nundah",
+      // Office address from the live site's Contact page.
+      street: "Mezzanine Level, 59 Albany Creek Rd",
+      suburb: "Aspley",
       state: "QLD",
-      postcode: "",
+      postcode: "4034",
       country: "Australia",
     },
     // "By appointment only" (proposal §1).
     hours: "By appointment",
-    // TODO(client, Q17): confirm the live Google Business Profile URL.
-    googleBusinessProfileUrl: "",
-    mapsEmbedUrl: "", // TODO(client): Google Maps embed URL for the Contact page.
+    // Google Business Profile (place cid) from the live site's Contact page.
+    googleBusinessProfileUrl: "https://maps.google.com/?cid=3536269755341382424",
+    // Left blank on purpose: MapEmbed derives a keyless embed from the address above.
+    mapsEmbedUrl: "",
   },
 
   /** Under-used credibility the redesign should surface (proposal §1). */

@@ -124,5 +124,6 @@ export const awards: Award[] = [
   },
 ];
 
+// Community involvement summarised from the live site's "Our Community" page.
 export const community =
-  "TODO(client, Q7): community involvement — sponsorships, local initiatives, memberships.";
+  "Beyond the numbers, our team gives back locally — collecting surplus food from supermarkets to distribute to families in need, and helping charities get established and scale through pro-bono guidance on structures and DGR status.";

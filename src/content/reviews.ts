@@ -2,9 +2,9 @@
  * Featured client reviews for the Home and About pages (proposal §2 — surface
  * the 4.9-star / 62-review credibility that the current site buries).
  *
- * TODO(client, Q7/Q19): confirm permission to display these names/quotes, and
- * decide whether to show live Google reviews via a widget instead of these
- * static highlights. These placeholders stand in until then.
+ * Quotes below are real Google reviews surfaced on the current site's
+ * Testimonials page. TODO(client, Q7/Q19): confirm you're happy to feature
+ * these named reviews here, or swap for a live Google reviews widget.
  */
 
 export type Review = {
@@ -15,21 +15,21 @@ export type Review = {
 
 export const reviews: Review[] = [
   {
-    author: "Placeholder client", // TODO(client, Q7)
+    author: "Elise Thomson",
     rating: 5,
     quote:
-      "TODO(client): a short, approved testimonial highlighting responsiveness and expertise.",
+      "We recommend Unni to everyone we know who has a small business. Knowledgeable, friendly and solution based.",
   },
   {
-    author: "Placeholder client",
+    author: "Mark Van Horssen",
     rating: 5,
     quote:
-      "TODO(client): a short, approved testimonial from a medical or small-business client.",
+      "Unni has been working effectively with me to improve my business for over 6 years now.",
   },
   {
-    author: "Placeholder client",
+    author: "Tim Allen",
     rating: 5,
     quote:
-      "TODO(client): a short, approved testimonial about tax savings or clear advice.",
+      "Unni saved me about $35,000 in CGT tax from the sale of a townhouse.",
   },
 ];
