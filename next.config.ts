@@ -1,4 +1,5 @@
 import type { NextConfig } from "next";
+import { BASE_PATH } from "./src/lib/base-path";
 
 // GitHub Pages is a static host, so the site is built with `output: "export"`.
 // This rules out server-only features: the /api/contact route handler, the
@@ -10,11 +11,9 @@ import type { NextConfig } from "next";
 // so `basePath` prefixes every route and asset with `/abn`. If you later move
 // to a custom domain served at the root, remove `basePath` and add a
 // `public/CNAME` file containing the domain.
-const repoBasePath = "/abn";
-
 const nextConfig: NextConfig = {
   output: "export",
-  basePath: repoBasePath,
+  basePath: BASE_PATH,
   turbopack: {
     rules: {
       "*.css": {

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { awards } from "@/content/team";
+import { asset } from "@/lib/base-path";
 import { houseAccent } from "@/lib/palette";
 import { cn } from "@/lib/utils";
 
@@ -27,7 +28,7 @@ export function AwardsStrip({
             )}
           >
             <Image
-              src={award.image}
+              src={asset(award.image)}
               alt={award.name}
               width={award.width}
               height={award.height}

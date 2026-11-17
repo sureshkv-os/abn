@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { team } from "@/content/team";
 import { site } from "@/content/site";
+import { asset } from "@/lib/base-path";
 
 function initials(name: string) {
   return name
@@ -38,7 +39,7 @@ export function TeamGrid() {
               <div className="relative size-20 shrink-0 overflow-hidden rounded-xl bg-muted sm:size-24">
                 {member.photo ? (
                   <Image
-                    src={member.photo}
+                    src={asset(member.photo)}
                     alt={`${member.name} — ${site.name}`}
                     fill
                     className="object-cover object-top"
