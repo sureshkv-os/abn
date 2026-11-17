@@ -1,6 +1,6 @@
 import { Clock, Mail, MapPin, Phone, Star } from "lucide-react";
 import { IconTile } from "@/components/ui/icon-tile";
-import { buttonVariants } from "@/components/ui/button";
+import { ReviewOnGoogleButton } from "@/components/review-on-google-button";
 import { houseAccent } from "@/lib/palette";
 import { site } from "@/content/site";
 
@@ -53,7 +53,7 @@ export function ContactDetails() {
         </li>
       </ul>
 
-      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-4">
         {contact.googleBusinessProfileUrl && (
           <a
             href={contact.googleBusinessProfileUrl}
@@ -65,17 +65,7 @@ export function ContactDetails() {
             Read our Google reviews
           </a>
         )}
-        {contact.googleReviewUrl && (
-          <a
-            href={contact.googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "sm" })}
-          >
-            <Star className="fill-primary stroke-primary" aria-hidden />
-            Review us on Google
-          </a>
-        )}
+        <ReviewOnGoogleButton />
       </div>
     </div>
   );

@@ -1,7 +1,7 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { buttonVariants } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { ReviewOnGoogleButton } from "@/components/review-on-google-button";
 import { houseAccent } from "@/lib/palette";
 import { asset } from "@/lib/base-path";
 import { reviews } from "@/content/reviews";
@@ -75,19 +75,9 @@ export function Testimonials({
           </figure>
         ))}
       </div>
-      {site.contact.googleReviewUrl && (
-        <div className="mt-12 flex justify-center">
-          <a
-            href={site.contact.googleReviewUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonVariants({ variant: "outline", size: "lg" })}
-          >
-            <Star className="fill-primary stroke-primary" aria-hidden />
-            Review us on Google
-          </a>
-        </div>
-      )}
+      <div className="mt-12 flex justify-center">
+        <ReviewOnGoogleButton />
+      </div>
     </section>
   );
 }

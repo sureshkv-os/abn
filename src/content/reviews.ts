@@ -24,6 +24,9 @@ export const reviews: Review[] = [
     rating: 5,
     quote:
       "We recommend Unni to everyone we know who has a small business. Knowledgeable, friendly and solution based.",
+    // Saved from the reviewer's public Google profile photo for reliability
+    // (the original googleusercontent URL is not stable).
+    avatar: "/reviews/elise-thomson.png",
   },
   {
     author: "Mark Van Horssen",
