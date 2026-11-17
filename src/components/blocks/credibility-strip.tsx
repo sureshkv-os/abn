@@ -16,8 +16,7 @@ export function CredibilityStrip() {
       <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-center gap-x-10 gap-y-4 px-6 py-6 text-sm font-medium text-foreground/80">
         <span className="inline-flex items-center gap-2">
           <Star className="size-4 fill-primary stroke-primary" aria-hidden />
-          {credibility.googleRating} stars · {credibility.googleReviewCount} Google
-          reviews
+          {credibility.googleRating} stars on Google
         </span>
         {credibility.isXeroPartner && (
           <span className="inline-flex items-center gap-2">

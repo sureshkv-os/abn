@@ -50,6 +50,9 @@ export const site = {
     hours: "By appointment",
     // Google Business Profile (place cid) from the live site's Contact page.
     googleBusinessProfileUrl: "https://maps.google.com/?cid=3536269755341382424",
+    // "Write a review" deep link for the Google Business Profile.
+    googleReviewUrl:
+      "https://search.google.com/local/writereview?placeid=ChIJxUmy_hBYkWsRGKMURZtaEzE",
     // Left blank on purpose: MapEmbed derives a keyless embed from the address above.
     mapsEmbedUrl: "",
   },
@@ -57,7 +60,9 @@ export const site = {
   /** Under-used credibility the redesign should surface (proposal §1). */
   credibility: {
     googleRating: 4.9,
-    googleReviewCount: 62,
+    // Review count intentionally omitted: a hardcoded number goes stale (the
+    // live total keeps climbing), and a static site can't read the live count
+    // without the paid Google Places API. We show the rating and link out instead.
     isXeroPartner: true,
     awardsNote: "Award-winning — Public Accountant of the Year 2022",
   },

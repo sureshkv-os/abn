@@ -1,5 +1,6 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { buttonVariants } from "@/components/ui/button";
 import { houseAccent } from "@/lib/palette";
 import { reviews } from "@/content/reviews";
 import { site } from "@/content/site";
@@ -20,8 +21,7 @@ export function Testimonials({
           {heading}
         </h2>
         <p className="text-sm text-muted-foreground">
-          Rated {site.credibility.googleRating} from{" "}
-          {site.credibility.googleReviewCount} Google reviews
+          Rated {site.credibility.googleRating} on Google
         </p>
       </div>
       <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 lg:gap-12">
@@ -53,6 +53,19 @@ export function Testimonials({
           </figure>
         ))}
       </div>
+      {site.contact.googleReviewUrl && (
+        <div className="mt-12 flex justify-center">
+          <a
+            href={site.contact.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "outline", size: "lg" })}
+          >
+            <Star className="fill-primary stroke-primary" aria-hidden />
+            Review us on Google
+          </a>
+        </div>
+      )}
     </section>
   );
 }

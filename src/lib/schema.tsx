@@ -7,7 +7,7 @@ import { services } from "@/content/services";
  * root layout. Values read from the single source of truth in content/site.ts.
  */
 export function accountingServiceSchema() {
-  const { contact, credibility } = site;
+  const { contact } = site;
   const sameAs = [contact.googleBusinessProfileUrl].filter(Boolean);
 
   return {
@@ -31,15 +31,8 @@ export function accountingServiceSchema() {
     },
     areaServed: "Brisbane, Queensland, Australia",
     ...(sameAs.length ? { sameAs } : {}),
-    ...(credibility.googleReviewCount
-      ? {
-          aggregateRating: {
-            "@type": "AggregateRating",
-            ratingValue: credibility.googleRating,
-            reviewCount: credibility.googleReviewCount,
-          },
-        }
-      : {}),
+    // No aggregateRating: we don't have a reliable live review count, and
+    // self-serving ratings aren't eligible for Google rich results anyway.
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Accounting services",

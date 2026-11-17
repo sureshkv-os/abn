@@ -1,11 +1,12 @@
 import { Clock, Mail, MapPin, Phone, Star } from "lucide-react";
 import { IconTile } from "@/components/ui/icon-tile";
+import { buttonVariants } from "@/components/ui/button";
 import { houseAccent } from "@/lib/palette";
 import { site } from "@/content/site";
 
 /** Contact page: NAP, click-to-call, hours and Google Business Profile link. */
 export function ContactDetails() {
-  const { contact, credibility } = site;
+  const { contact } = site;
   const addressLine = [
     contact.address.street,
     contact.address.suburb,
@@ -52,17 +53,30 @@ export function ContactDetails() {
         </li>
       </ul>
 
-      {contact.googleBusinessProfileUrl && (
-        <a
-          href={contact.googleBusinessProfileUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
-        >
-          <Star className="size-4 fill-primary stroke-primary" aria-hidden />
-          Read our {credibility.googleReviewCount} Google reviews
-        </a>
-      )}
+      <div className="flex flex-wrap items-center gap-x-5 gap-y-3">
+        {contact.googleBusinessProfileUrl && (
+          <a
+            href={contact.googleBusinessProfileUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
+          >
+            <Star className="size-4 fill-primary stroke-primary" aria-hidden />
+            Read our Google reviews
+          </a>
+        )}
+        {contact.googleReviewUrl && (
+          <a
+            href={contact.googleReviewUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={buttonVariants({ variant: "outline", size: "sm" })}
+          >
+            <Star className="fill-primary stroke-primary" aria-hidden />
+            Review us on Google
+          </a>
+        )}
+      </div>
     </div>
   );
 }
