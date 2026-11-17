@@ -99,12 +99,12 @@ export function SiteFooter() {
             <span>
               Website by{" "}
               <a
-                href="https://claude.com/claude-code"
+                href="https://evaquest.co"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-foreground"
               >
-                Suresh K V
+                EvaQuest
               </a>
             </span>
           </div>
