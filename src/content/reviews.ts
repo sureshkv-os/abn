@@ -11,6 +11,11 @@ export type Review = {
   author: string;
   rating: number;
   quote: string;
+  /**
+   * Optional profile photo under /public (e.g. "/reviews/elise.webp"). When
+   * omitted, the testimonials section shows an initials avatar instead.
+   */
+  avatar?: string;
 };
 
 export const reviews: Review[] = [

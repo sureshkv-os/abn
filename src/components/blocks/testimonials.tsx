@@ -1,9 +1,21 @@
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { buttonVariants } from "@/components/ui/button";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { houseAccent } from "@/lib/palette";
+import { asset } from "@/lib/base-path";
 import { reviews } from "@/content/reviews";
 import { site } from "@/content/site";
+
+function initials(name: string) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .filter(Boolean)
+    .slice(0, 2)
+    .join("")
+    .toUpperCase();
+}
 
 /**
  * Featured reviews (adapts Tailark mist-testimonials-3). Reads content/reviews.
@@ -47,8 +59,18 @@ export function Testimonials({
             <blockquote className="mt-4 text-foreground">
               {review.quote}
             </blockquote>
-            <figcaption className="mt-3 text-sm font-medium text-muted-foreground">
-              {review.author}
+            <figcaption className="mt-4 flex items-center gap-3">
+              <Avatar>
+                {review.avatar && (
+                  <AvatarImage src={asset(review.avatar)} alt={review.author} />
+                )}
+                <AvatarFallback className="bg-primary/10 font-medium text-primary">
+                  {initials(review.author)}
+                </AvatarFallback>
+              </Avatar>
+              <span className="text-sm font-medium text-foreground">
+                {review.author}
+              </span>
             </figcaption>
           </figure>
         ))}
