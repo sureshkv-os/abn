@@ -11,6 +11,12 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { contactSchema, type ContactInput } from "@/lib/contact-schema";
 
+// Web3Forms access key. This is public by design (the form runs client-side on
+// a static host), so committing it is safe — it is rate-limited and spam-filtered
+// on Web3Forms' side, and grants no account access. Submissions are emailed to
+// the address this key was created for.
+const WEB3FORMS_ACCESS_KEY = "ae1e293a-2496-473f-9373-a7217fd97391";
+
 export function ContactForm() {
   const {
     register,
@@ -29,13 +35,33 @@ export function ContactForm() {
   });
 
   const onSubmit = async (values: ContactInput) => {
+    // Honeypot: a filled "company" field means a bot. Silently pretend success
+    // and never hit the network, so the trap isn't revealed.
+    if (values.company) {
+      toast.success("Thanks — we'll be in touch within one business day.");
+      reset();
+      return;
+    }
+
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(values),
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_ACCESS_KEY,
+          subject: "New enquiry from Accountants Brisbane North",
+          from_name: "Accountants Brisbane North website",
+          name: values.name,
+          email: values.email,
+          phone: values.phone,
+          message: values.message,
+        }),
       });
-      if (!res.ok) throw new Error("Request failed");
+      const data = (await res.json()) as { success: boolean };
+      if (!data.success) throw new Error("Request failed");
       toast.success("Thanks — we'll be in touch within one business day.");
       reset();
     } catch {
