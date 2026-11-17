@@ -30,8 +30,7 @@ export const services: Service[] = [
       "Tax returns and BAS for sole traders and companies",
       "Cash-flow and compliance for growing practices",
     ],
-    caseStudy:
-      "TODO(client, Q7): confirm a medical-sector case-study highlight and display permission.",
+    // No medical-sector case study on the old site yet. TODO(client): supply one.
   },
   {
     slug: "property",
@@ -45,8 +44,7 @@ export const services: Service[] = [
       "Capital gains tax planning on sale",
       "Depreciation and property-portfolio reporting",
     ],
-    caseStudy:
-      "TODO(client, Q7): confirm a property-sector case-study highlight and display permission.",
+    // No property-investor case study on the old site yet. TODO(client): supply one.
   },
   {
     slug: "planning",
@@ -60,8 +58,9 @@ export const services: Service[] = [
       "Superannuation contribution planning",
       "Forecasting and tax-liability estimates",
     ],
+    // Condensed from the live site's "first home buyers" case study.
     caseStudy:
-      "TODO(client, Q7): confirm a tax-planning case-study highlight and display permission.",
+      "Working alongside banks, lenders and mortgage brokers, we helped first-home buyers get the balance right between income and tax and present a clear income-and-expenses picture for lenders. Clients who came to us before year-end left with a tax-smart pathway to their first home.",
   },
   {
     slug: "business",
@@ -75,7 +74,9 @@ export const services: Service[] = [
       "Xero setup, training and bookkeeping",
       "Ongoing advisory and quarterly reviews",
     ],
+    // Condensed from the live site's "building industry" case study (personal
+    // details intentionally omitted).
     caseStudy:
-      "TODO(client, Q7): confirm a small-business case-study highlight and display permission.",
+      "A builder operating under the wrong structure faced penalties, fines and a potential criminal conviction for unmet compliance obligations. On our advice he moved to a more suitable trading structure — removing that exposure and saving an estimated $10,000 a year in cash flow.",
   },
 ];
