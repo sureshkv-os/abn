@@ -1,32 +1,28 @@
-import Image from "next/image";
 import { Phone } from "lucide-react";
 import { buttonVariants } from "@/components/ui/button";
 import { GradientCta } from "@/components/ui/gradient-cta";
 import { cn } from "@/lib/utils";
 import { site } from "@/content/site";
 import { AnimatedHeadline } from "@/components/blocks/animated-headline";
-import heroImage from "../../../public/hero.png";
+import { HeroCarousel } from "@/components/blocks/hero-carousel";
+import hero1 from "../../../public/carousel/hero-1.png";
+import hero2 from "../../../public/carousel/hero-2.png";
+import hero3 from "../../../public/carousel/hero-3.png";
+import hero4 from "../../../public/carousel/hero-4.png";
+
+const heroImages = [hero1, hero2, hero3, hero4];
 
 /**
- * Home hero: the client-supplied image covers the full section as a background.
- * A soft navy gradient sits over the left (where the copy lives) and fades to
- * transparent, so the headline and CTAs stay readable while most of the photo
- * shows through uncovered on the right.
+ * Home hero: a background carousel cross-fades through the client-supplied
+ * photos. A soft navy gradient sits over the left (where the copy lives) and
+ * fades to transparent, so the headline and CTAs stay readable while most of
+ * the photo shows through uncovered on the right.
  */
 export function Hero() {
   return (
     <section className="relative isolate overflow-hidden">
-      {/* Background image */}
-      <Image
-        src={heroImage}
-        alt=""
-        aria-hidden
-        fill
-        priority
-        placeholder="blur"
-        className="-z-20 object-cover"
-        sizes="100vw"
-      />
+      {/* Background image carousel */}
+      <HeroCarousel images={heroImages} />
       {/* Soft navy gradient over the left, fading to reveal the photo */}
       <div
         aria-hidden
