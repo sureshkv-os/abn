@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { site } from "@/content/site";
+import { asset } from "@/lib/base-path";
 
 const baseUrl = site.url;
 
@@ -58,6 +59,8 @@ export const rootMetadata: Metadata = {
     url: baseUrl,
     images: [{ url: "/hero.png", width: 1376, height: 768 }],
   },
-  icons: { icon: "/logo.ico" },
+  // basePath is NOT applied to metadata icon hrefs, so prefix it manually or
+  // the favicon 404s under the /abn subpath.
+  icons: { icon: asset("/logo.ico") },
   robots: { index: true, follow: true },
 };
